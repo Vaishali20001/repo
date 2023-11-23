@@ -23,3 +23,4 @@ public static void main(String[] args) throws InterruptedException {
 	driver.findElement(By.xpath("//span[text()='Maps']")).click();
 }
 }
+   

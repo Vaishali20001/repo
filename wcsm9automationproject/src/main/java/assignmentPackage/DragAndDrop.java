@@ -1,4 +1,4 @@
-package assignmentPackage;
+  package assignmentPackage;
 
 import java.time.Duration;
 
@@ -29,4 +29,4 @@ public static void main(String[] args) throws InterruptedException {
     act.dragAndDrop(src1, target1).perform();
 	
 }
-}
+} 

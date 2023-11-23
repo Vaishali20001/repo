@@ -50,7 +50,7 @@ public class AuthenticationPopUp {
 		handle_authentication_popup();
 		
 		
-	}
+	} 
 	
 	
 	
@@ -66,7 +66,7 @@ public class AuthenticationPopUp {
 		
 		robot.keyPress(KeyEvent.VK_TAB);
 		robot.keyRelease(KeyEvent.VK_TAB);
-		
+		  
 		robot.keyPress(KeyEvent.VK_A);
 		robot.keyPress(KeyEvent.VK_D);
 		robot.keyPress(KeyEvent.VK_M);
