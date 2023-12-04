@@ -14,13 +14,13 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class Flib {
 //it is use to store generic reusable methods
-	public String readDataFromExcel(String excelPath,String sheetName,int rowcount, int i) throws EncryptedDocumentException, IOException 
+	public String readExcelData(String excelPath,String sheetName,int rowCount, int cellCount) throws EncryptedDocumentException, IOException 
 	{
 		FileInputStream fis = new FileInputStream(excelPath);
 		Workbook wb = WorkbookFactory.create(fis);
 		Sheet sheet = wb.getSheet(sheetName);
-	    Row row = sheet.getRow(rowcount);
-	    Cell cell = row.getCell(rowcount);
+	    Row row = sheet.getRow(rowCount);
+	    Cell cell = row.getCell(cellCount);
 	    String data = cell.getStringCellValue();
 		return data;	    
 	    
@@ -57,5 +57,15 @@ public class Flib {
 		String data = prop.getProperty(key);
 		return data;
 		}
+
+
+	
+
+	
+
 	
 	}
+
+
+	
+	

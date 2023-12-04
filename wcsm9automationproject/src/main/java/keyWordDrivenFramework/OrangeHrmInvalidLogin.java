@@ -6,32 +6,34 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class OrangeHrmInvalidLogin extends BaseTest {
-public static void main(String[] args) throws IOException, InterruptedException {
+
 	
-BaseTest bt = new BaseTest();
-bt.openBrowser();
- // to read data from excel
-	Flib flib = new Flib();
-	int rc = flib.rowCount("./src/main/resource/LoginData.xlsx","invalidcreads");
-	
-	for(int i=1; i<=rc;i++)
-	{
-		//String invalidUsn = flib.readDataFromExcel("./src/main/resource/LoginData.xlsx","invalidcreads",i,0);
-		//String invalidPass = flib.readDataFromExcel("./src/main/resource/LoginData.xlsx","invalidcreads",i,1);
+	public static void main(String[] args) throws IOException, InterruptedException {
+		// to open & close Browser
+		BaseTest bt = new BaseTest();
+		bt.openBrowser();
 		
-		// to identify username text box
-		WebElement usnTB = driver.findElement(By.name("username"));
-		usnTB.sendKeys(flib.readDataFromExcel(EXCEL_PATH,INVALIDCREDS_SHEET,i,0));
+		//Read the invalid username & password from ActiTimeTestData Excel file
+		Flib flib = new Flib();
 		
-		//to identify password text box
-		WebElement usnPass = driver.findElement(By.name("password"));
-		usnTB.sendKeys(flib.readDataFromExcel(EXCEL_PATH,INVALIDCREDS_SHEET,i,1));
-		
-		//identify login button and click
-		driver.findElement(By.xpath("//button[text()=' Login ']")).click();
+		//get the last row count 
+		int rc = flib.rowCount(EXCEL_PATH,INVALIDCREDS_SHEET);
 		Thread.sleep(2000);
-		driver.findElement(By.name("username")).clear();				
-	}
-	bt.closeBrowser();
+		for(int i=1;i<=rc;i++)
+		{
+			
+		// identify username text box pass invalid username
+		driver.findElement(By.name("username")).sendKeys(flib.readExcelData(EXCEL_PATH,INVALIDCREDS_SHEET, i,0));
+		//identify password text box pass invalid password
+		driver.findElement(By.name("password")).sendKeys(flib.readExcelData(EXCEL_PATH,INVALIDCREDS_SHEET, i,1));
+		//identify login Button and click
+		driver.findElement(By.xpath("//button[text()=' Login ']")).click();
+		//clear the username text Box
+		driver.findElement(By.name("username")).clear();
+		}
+		
+		Thread.sleep(2000);
+		bt.closeBrowser();
+
 }
 }
